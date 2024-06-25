@@ -1,5 +1,6 @@
 package dev.wolfieboy09.singularityreactor.Registry;
 
+import dev.wolfieboy09.singularityreactor.Registry.AdvancedBlocks.FuelCell;
 import dev.wolfieboy09.singularityreactor.SingularityReactor;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,8 +23,10 @@ public class BlockRegistry {
             DeferredRegister.create(ForgeRegistries.BLOCKS, SingularityReactor.MOD_ID);
 
     public static final RegistryObject<Block> FUEL_CELL = registerBlock("fuel_cell",
-            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()));
+            () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()));
 
+
+    // registry stuff
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
