@@ -3,9 +3,7 @@ package dev.wolfieboy09.singularityreactor.Registry;
 import dev.wolfieboy09.singularityreactor.SingularityReactor;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,7 +22,7 @@ public class BlockRegistry {
             DeferredRegister.create(ForgeRegistries.BLOCKS, SingularityReactor.MOD_ID);
 
     public static final RegistryObject<Block> FUEL_CELL = registerBlock("fuel_cell",
-            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -32,11 +30,9 @@ public class BlockRegistry {
         return toReturn;
     }
 
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return ItemRegistry.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
+        ItemRegistry.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
-    }
+    public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }
 }
