@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularityreactor.Registry.AdvancedBlocks;
+package dev.wolfieboy09.singularityreactor.registry.advancedblocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;

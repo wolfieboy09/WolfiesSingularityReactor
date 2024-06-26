@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularityreactor.Registry;
+package dev.wolfieboy09.singularityreactor.registry;
 
 import dev.wolfieboy09.singularityreactor.SingularityReactor;
 import net.minecraft.world.item.Item;

@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularityreactor.Registry;
+package dev.wolfieboy09.singularityreactor.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

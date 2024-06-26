@@ -1,9 +1,9 @@
 package dev.wolfieboy09.singularityreactor;
 
 import com.mojang.logging.LogUtils;
-import dev.wolfieboy09.singularityreactor.Registry.BlockRegistry;
-import dev.wolfieboy09.singularityreactor.Registry.CreativeTabRegistry;
-import dev.wolfieboy09.singularityreactor.Registry.ItemRegistry;
+import dev.wolfieboy09.singularityreactor.registry.BlockRegistry;
+import dev.wolfieboy09.singularityreactor.registry.CreativeTabRegistry;
+import dev.wolfieboy09.singularityreactor.registry.ItemRegistry;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
