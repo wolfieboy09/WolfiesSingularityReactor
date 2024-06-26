@@ -23,7 +23,7 @@ public class BlockRegistry {
             DeferredRegister.create(ForgeRegistries.BLOCKS, SingularityReactor.MOD_ID);
 
     public static final RegistryObject<Block> FUEL_CELL = registerBlock("fuel_cell",
-            () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()));
+            () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 1);
 
 
     // registry stuff
@@ -33,8 +33,18 @@ public class BlockRegistry {
         return toReturn;
     }
 
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, int stacksTo) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn, stacksTo);
+        return toReturn;
+    }
+
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         ItemRegistry.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block, int stacksTo) {
+        ItemRegistry.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(stacksTo)));
     }
 
     public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }
