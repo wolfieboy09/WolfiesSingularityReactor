@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularityreactor;
+package dev.wolfieboy09.singularity;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;

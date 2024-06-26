@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularityreactor.registry;
+package dev.wolfieboy09.singularity.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-import static dev.wolfieboy09.singularityreactor.SingularityReactor.MOD_ID;
+import static dev.wolfieboy09.singularity.SingularityReactor.MOD_ID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MOD_ID)
 public class CreativeTabRegistry {

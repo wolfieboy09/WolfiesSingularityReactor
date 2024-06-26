@@ -1,7 +1,7 @@
-package dev.wolfieboy09.singularityreactor.registry;
+package dev.wolfieboy09.singularity.registry;
 
-import dev.wolfieboy09.singularityreactor.registry.advancedblocks.FuelCell;
-import dev.wolfieboy09.singularityreactor.SingularityReactor;
+import dev.wolfieboy09.singularity.registry.advancedblocks.FuelCell;
+import dev.wolfieboy09.singularity.SingularityReactor;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -13,9 +13,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+
 import java.util.function.Supplier;
 
-import static dev.wolfieboy09.singularityreactor.SingularityReactor.MOD_ID;
+import static dev.wolfieboy09.singularity.SingularityReactor.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BlockRegistry {
@@ -23,7 +24,7 @@ public class BlockRegistry {
             DeferredRegister.create(ForgeRegistries.BLOCKS, SingularityReactor.MOD_ID);
 
     public static final RegistryObject<Block> FUEL_CELL = registerBlock("fuel_cell",
-            () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 1);
+            () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()), 1);
 
 
     // registry stuff

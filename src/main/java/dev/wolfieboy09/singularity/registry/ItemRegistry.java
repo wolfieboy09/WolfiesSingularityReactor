@@ -1,6 +1,6 @@
-package dev.wolfieboy09.singularityreactor.registry;
+package dev.wolfieboy09.singularity.registry;
 
-import dev.wolfieboy09.singularityreactor.SingularityReactor;
+import dev.wolfieboy09.singularity.SingularityReactor;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
