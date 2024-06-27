@@ -28,7 +28,7 @@ public class BlockRegistry {
             () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()), 1);
 
     public static final RegistryObject<Block> VACUUM_CHAMBER = registerBlock("vacuum_chamber",
-            () -> new VacuumChamber(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+            () -> new VacuumChamber(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()));
 
 
     // registry stuff
