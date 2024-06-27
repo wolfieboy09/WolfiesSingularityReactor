@@ -19,14 +19,17 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public class FuelCell extends BaseEntityBlock {
-    public FuelCell(Properties pProperties) {
-        super(pProperties);
-    }
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final VoxelShape SHAPE_CENTER;
-    public static final VoxelShape SHAPE_BASE;
-    public static final VoxelShape SHAPE_HANDEL;
-    public static final VoxelShape SHAPE_COMMON;
+    public FuelCell(Properties pProperties) { super(pProperties); }
+
+    // I place you under my protected wing
+    protected static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    protected static final VoxelShape SHAPE_CENTER;
+    protected static final VoxelShape SHAPE_BASE;
+    protected static final VoxelShape SHAPE_HANDEL_LEFT;
+    protected static final VoxelShape SHAPE_HANDEL_RIGHT;
+    protected static final VoxelShape SHAPE_HANDEL_TOP;
+    protected static final VoxelShape SHAPE_HANDEL;
+    protected static final VoxelShape SHAPE_COMMON;
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) { pBuilder.add(FACING); }
@@ -43,11 +46,15 @@ public class FuelCell extends BaseEntityBlock {
     @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) { return SHAPE_COMMON; }
 
-    // work in progress
     static {
-        SHAPE_CENTER = Block.box(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-        SHAPE_HANDEL = Block.box(0.0, 12.0, 0.0, 0.0, 16.0, 0.0);
-        SHAPE_BASE = Block.box(0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        SHAPE_CENTER = Block.box(5.0, 0.0, 5.0, 11.0, 12.0, 11.0);
+        SHAPE_BASE = Block.box(6.6, 0.0, 6.6, 11.0, 1.2, 11.0);
+
+        SHAPE_HANDEL_LEFT = Block.box(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+        SHAPE_HANDEL_RIGHT = Block.box(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        SHAPE_HANDEL_TOP = Block.box(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+
+        SHAPE_HANDEL = Shapes.or(SHAPE_HANDEL_LEFT, SHAPE_HANDEL_TOP, SHAPE_HANDEL_RIGHT);
         SHAPE_COMMON = Shapes.or(SHAPE_CENTER, SHAPE_HANDEL, SHAPE_BASE);
     }
 
