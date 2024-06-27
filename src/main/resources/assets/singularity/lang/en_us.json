@@ -1,3 +1,6 @@
 {
-  "block.singularity.fuel_cell": "Fuel Cell"
+  "block.singularity.fuel_cell": "Fuel Cell",
+  "block.singularity.vacuum_chamber": "Vacuum Chamber",
+
+  "creative_tab.singularity.name": "Wolfie's Singularity Reactor"
 }

@@ -2,6 +2,7 @@ package dev.wolfieboy09.singularity.registry;
 
 import dev.wolfieboy09.singularity.advancedblocks.FuelCell;
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.advancedblocks.VacuumChamber;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -25,6 +26,9 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> FUEL_CELL = registerBlock("fuel_cell",
             () -> new FuelCell(BlockBehaviour.Properties.of().sound(SoundType.METAL).noOcclusion()), 1);
+
+    public static final RegistryObject<Block> VACUUM_CHAMBER = registerBlock("vacuum_chamber",
+            () -> new VacuumChamber(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
 
 
     // registry stuff

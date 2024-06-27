@@ -15,10 +15,11 @@ import static dev.wolfieboy09.singularity.SingularityReactor.MOD_ID;
 public class CreativeTabRegistry {
     public static final DeferredRegister<CreativeModeTab> TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final RegistryObject<CreativeModeTab> BLOCKS = TAB.register("blocks",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(BlockRegistry.FUEL_CELL.get(), 1))
-                    .title(Component.literal("Blocks"))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(BlockRegistry.FUEL_CELL.get()))
+                    .title(Component.translatable("creative_tab.singularity.name"))
                     .displayItems((params, output) -> {
                         output.accept(BlockRegistry.FUEL_CELL.get());
+                        output.accept(BlockRegistry.VACUUM_CHAMBER.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
