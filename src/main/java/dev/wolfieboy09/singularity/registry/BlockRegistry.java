@@ -1,8 +1,8 @@
 package dev.wolfieboy09.singularity.registry;
 
-import dev.wolfieboy09.singularity.advancedblocks.FuelCell;
+import dev.wolfieboy09.singularity.blockentity.block.FuelCell;
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.advancedblocks.VacuumChamber;
+import dev.wolfieboy09.singularity.blockentity.block.VacuumChamber;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;

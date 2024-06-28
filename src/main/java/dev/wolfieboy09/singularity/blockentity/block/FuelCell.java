@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularity.advancedblocks;
+package dev.wolfieboy09.singularity.blockentity.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
