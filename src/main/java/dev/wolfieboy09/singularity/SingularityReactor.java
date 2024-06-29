@@ -42,14 +42,13 @@ public class SingularityReactor {
 
     // private void addCreative(BuildCreativeModeTabContentsEvent event) {}
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {}
+    @SubscribeEvent public void onServerStarting(ServerStartingEvent event) { LOGGER.info("Started up on dist DEDICATED_SERVER"); }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
+        public static void onClientSetup(FMLClientSetupEvent event) { LOGGER.info("Starting up on dist CLIENT"); }
     }
 }
