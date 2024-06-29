@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.registry;
 
-import dev.wolfieboy09.singularity.blockentity.block.FuelCell;
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.blockentity.block.FuelCell;
 import dev.wolfieboy09.singularity.blockentity.block.VacuumChamber;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
 
 import java.util.function.Supplier;
 
