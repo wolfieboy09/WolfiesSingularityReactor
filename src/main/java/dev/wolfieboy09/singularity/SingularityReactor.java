@@ -3,7 +3,9 @@ package dev.wolfieboy09.singularity;
 import com.mojang.logging.LogUtils;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import dev.wolfieboy09.singularity.registry.CreativeTabRegistry;
+import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import dev.wolfieboy09.singularity.registry.ItemRegistry;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -33,6 +35,7 @@ public class SingularityReactor {
         // modEventBus.addListener(this::addCreative);
         ItemRegistry.ITEMS.register(bus);
         BlockRegistry.BLOCKS.register(bus);
+        EntityRegistry.BLOCK_ENTITIES.register(bus);
         CreativeTabRegistry.TAB.register(bus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
