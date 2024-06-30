@@ -30,7 +30,7 @@ public class SingularityEnergyStorage extends EnergyStorage {
     public SingularityEnergyStorage(int capacity, int maxReceive, int maxExtract, int energy) { super(capacity, maxReceive, maxExtract, energy); }
 
     /**
-     * @param energy Sets the energy
+     * @param energy Sets the energy given
      */
     public void setEnergy(int energy) {
         if(energy < 0)
