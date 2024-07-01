@@ -1,5 +1,6 @@
 package dev.wolfieboy09.singularity.registry;
 
+import dev.wolfieboy09.singularity.blockentity.entities.FuelCellBlockEntity;
 import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.fml.common.Mod;
@@ -15,7 +16,12 @@ public class EntityRegistry {
 
 
     public static final RegistryObject<BlockEntityType<VacuumChamberBlockEntity>> VACUUM_CHAMBER_BLOCK_ENTITY =
-            BLOCK_ENTITIES.register("vacuum_chamber_block_entity", () ->
-                    BlockEntityType.Builder.of(VacuumChamberBlockEntity::new,
-                            BlockRegistry.VACUUM_CHAMBER.get()).build(null));
+            BLOCK_ENTITIES.register("vacuum_chamber",
+                    () -> BlockEntityType.Builder.of(VacuumChamberBlockEntity::new, BlockRegistry.VACUUM_CHAMBER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<FuelCellBlockEntity>> FUEL_CELL_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("fuel_cell",
+                    () -> BlockEntityType.Builder.of(FuelCellBlockEntity::new, BlockRegistry.FUEL_CELL.get())
+                            .build(null));
 }

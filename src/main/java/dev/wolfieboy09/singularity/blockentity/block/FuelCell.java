@@ -1,5 +1,6 @@
 package dev.wolfieboy09.singularity.blockentity.block;
 
+import dev.wolfieboy09.singularity.blockentity.entities.FuelCellBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -62,5 +63,5 @@ public class FuelCell extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) { return null; }
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) { return new FuelCellBlockEntity(blockPos, blockState); }
 }
