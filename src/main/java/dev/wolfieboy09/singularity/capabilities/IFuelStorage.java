@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularity.blockentity.capabilities;
+package dev.wolfieboy09.singularity.capabilities;
 
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 

@@ -1,6 +1,6 @@
 package dev.wolfieboy09.singularity.storage;
 
-import dev.wolfieboy09.singularity.blockentity.capabilities.IFuelStorage;
+import dev.wolfieboy09.singularity.capabilities.IFuelStorage;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.util.INBTSerializable;

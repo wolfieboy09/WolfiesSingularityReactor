@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.blockentity.capabilities.SingularityCapabilities;
+import dev.wolfieboy09.singularity.capabilities.SingularityCapabilities;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import dev.wolfieboy09.singularity.storage.FuelStorage;
 import net.minecraft.MethodsReturnNonnullByDefault;
