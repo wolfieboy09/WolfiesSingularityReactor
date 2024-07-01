@@ -52,10 +52,7 @@ public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
         public int getCount() { return 2; }
     };
 
-    public FuelCellBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(EntityRegistry.FUEL_CELL_BLOCK_ENTITY.get(), pPos, pBlockState);
-    }
-
+    public FuelCellBlockEntity(BlockPos pPos, BlockState pBlockState) { super(EntityRegistry.FUEL_CELL_BLOCK_ENTITY.get(), pPos, pBlockState); }
     @Override public Component getDisplayName() { return Component.translatable("block.singularity.fuel_cell"); }
 
     @Nullable
