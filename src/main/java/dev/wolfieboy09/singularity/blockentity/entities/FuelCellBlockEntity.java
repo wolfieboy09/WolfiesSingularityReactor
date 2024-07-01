@@ -79,7 +79,7 @@ public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
         if (nbt.isEmpty()) return;
 
         if (nbt.contains("Fuel")) {
-            this.fuel.deserializeNBT(nbt.getCompound("Fuel"));
+            this.fuel.deserializeNBT(nbt.get("Fuel"));
         }
     }
 
