@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.storage.SingularityEnergyStorage;
 import dev.wolfieboy09.singularity.storage.SingularityFuelStorage;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -8,13 +9,22 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -22,8 +32,27 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
-    private SingularityFuelStorage fuel = new SingularityFuelStorage(10000, 500);
-    private LazyOptional<SingularityFuelStorage> lazyFuel = LazyOptional.of(() -> this.fuel);
+    private final SingularityFuelStorage fuel = new SingularityFuelStorage(10000, 500);
+    private final LazyOptional<SingularityFuelStorage> lazyFuel = LazyOptional.of(() -> this.fuel);
+
+    public final ContainerData data = new ContainerData() {
+        @Override
+        public int get(int index) {
+            return switch (index) {
+                case 0 -> FuelCellBlockEntity.this.fuel.getFuelStored();
+                case 1 -> FuelCellBlockEntity.this.fuel.getMaxFuelStored();
+                default -> throw new UnsupportedOperationException("Unexpected index: " + index);
+            };
+        }
+
+        @Override
+        public void set(int index, int value) {
+            if (index == 0) FuelCellBlockEntity.this.fuel.setFuel(value);
+        }
+
+        @Override
+        public int getCount() { return 2; }
+    };
 
     public FuelCellBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(EntityRegistry.FUEL_CELL_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -35,6 +64,12 @@ public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return null;
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        lazyFuel.invalidate();
     }
 
     @Override
@@ -52,6 +87,34 @@ public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
 
         if (data.contains("Fuel", Tag.TAG_INT)) {
             this.fuel.deserializeNBT(data.getCompound("Fuel"));
+        }
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        CompoundTag nbt = super.getUpdateTag();
+        saveAdditional(nbt);
+        return nbt;
+    }
+
+    @Nullable @Override public Packet<ClientGamePacketListener> getUpdatePacket() { return ClientboundBlockEntityDataPacket.create(this); }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            return this.lazyFuel.cast();
+        } else {
+            return super.getCapability(cap);
+        }
+    }
+
+    public LazyOptional<SingularityFuelStorage> getFuelOptional() { return this.lazyFuel; }
+    public SingularityFuelStorage getFuel() { return this.fuel; }
+
+    private void sendUpdate() {
+        setChanged();
+        if (this.level != null) {
+            this.level.sendBlockUpdated(this.worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
         }
     }
 }

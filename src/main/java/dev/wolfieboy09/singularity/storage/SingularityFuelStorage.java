@@ -44,7 +44,7 @@ public class SingularityFuelStorage {
 
     /**
      * @param maxReceive Maximum amount of fuel that can go in at once
-     * @param simulate bro I don't know what "simulate" is
+     * @param simulate Weather to simulate or not
      * @return int
      */
     public int receiveFuel(int maxReceive, boolean simulate) {
@@ -108,5 +108,28 @@ public class SingularityFuelStorage {
         } else {
             throw new IllegalArgumentException("Can not deserialize to an instance that isn't the default implementation");
         }
+    }
+
+    /**
+     * @param fuel Sets the energy given
+     */
+    public void setFuel(int fuel) {
+        if(fuel < 0) fuel = 0;
+        if(fuel > this.capacity) fuel = this.capacity;
+        this.fuel = fuel;
+    }
+
+    /**
+     * @param fuel Amount of energy to add
+     */
+    public void addFuel(int fuel) {
+        setFuel(this.fuel + fuel);
+    }
+
+    /**
+     * @param fuel Amount of energy to remove
+     */
+    public void removeFuel(int fuel) {
+        setFuel(this.fuel - fuel);
     }
 }
