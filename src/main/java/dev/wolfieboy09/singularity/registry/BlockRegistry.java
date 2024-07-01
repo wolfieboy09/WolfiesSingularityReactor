@@ -1,11 +1,13 @@
 package dev.wolfieboy09.singularity.registry;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.blockentity.block.ElectricFurnace;
 import dev.wolfieboy09.singularity.blockentity.block.FuelCell;
 import dev.wolfieboy09.singularity.blockentity.block.VacuumChamber;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,6 +31,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> VACUUM_CHAMBER = registerBlock("vacuum_chamber",
             () -> new VacuumChamber(BlockBehaviour.Properties.of().sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion()));
 
+    public static final RegistryObject<Block> ELECTRIC_FURNACE = registerBlock("eletric_furnace",
+            () -> new ElectricFurnace(BlockBehaviour.Properties.copy(Blocks.FURNACE).sound(SoundType.METAL).requiresCorrectToolForDrops()));
 
     // registry stuff
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

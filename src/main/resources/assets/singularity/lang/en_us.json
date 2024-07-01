@@ -1,6 +1,7 @@
 {
   "block.singularity.fuel_cell": "Fuel Cell",
   "block.singularity.vacuum_chamber": "Vacuum Chamber",
+  "block.singularity.electric_furnace": "Electric Furnace",
 
   "creative_tab.singularity.name": "Wolfie's Singularity Reactor"
 }
