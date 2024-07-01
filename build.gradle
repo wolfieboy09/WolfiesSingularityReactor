@@ -34,8 +34,6 @@ minecraft {
         }
 
         client {
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
@@ -60,10 +58,6 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/"
-    }
-    maven {
         // location of the maven that hosts JEI files before January 2023
         name = "Progwml6's maven"
         url = "https://dvs1.progwml6.com/files/maven/"
@@ -86,9 +80,6 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
-
-    compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}:api")
-    runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
 }
 
 tasks.named('processResources', ProcessResources).configure {
