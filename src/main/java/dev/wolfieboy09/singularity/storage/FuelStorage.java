@@ -1,11 +1,12 @@
 package dev.wolfieboy09.singularity.storage;
 
+import dev.wolfieboy09.singularity.blockentity.capabilities.IFuelStorage;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;
+import net.minecraftforge.common.util.INBTSerializable;
 
-// I took EnergyStorage, and changed it to fuel, so thanks forge!
-// I also added some custom methods as well, not like you care really
-public class FuelStorage {
+
+public class FuelStorage implements IFuelStorage, INBTSerializable<Tag> {
     protected int fuel;
     protected int capacity;
     protected int maxReceive;
@@ -43,11 +44,13 @@ public class FuelStorage {
         this.fuel = Math.max(0, Math.min(capacity, fuel));
     }
 
+
     /**
      * @param maxReceive Maximum amount of fuel that can go in at once
      * @param simulate Weather to simulate or not
      * @return int
      */
+    @Override
     public int receiveFuel(int maxReceive, boolean simulate) {
         if (!this.canReceive()) {
             return 0;
@@ -65,6 +68,7 @@ public class FuelStorage {
      * @param simulate Weather to simulate it or not
      * @return int
      */
+    @Override
     public int extractFuel(int maxExtract, boolean simulate) {
         if (!this.canExtract()) {
             return 0;
@@ -78,31 +82,47 @@ public class FuelStorage {
     /**
      * @return Amount of fuel stored in current instance
      */
-    public int getFuelStored() { return this.fuel; }
+    @Override
+    public int getFuelStored() {
+        return this.fuel;
+    }
 
     /**
-     * @return Capacity of fuel in current instance
+     * @return Amount of fuel stored in current instance
      */
-    public int getMaxFuelStored() { return this.capacity; }
+    @Override
+    public int getMaxFuelStored() {
+        return this.capacity;
+    }
 
     /**
      * @return Weather or not fuel can be extracted
      */
-    public boolean canExtract() { return this.maxExtract > 0; }
+    @Override
+    public boolean canExtract() {
+        return this.maxExtract > 0;
+    }
 
     /**
      * @return Weather or not fuel can be received
      */
-    public boolean canReceive() { return this.maxReceive > 0; }
+    @Override
+    public boolean canReceive() {
+        return this.maxReceive > 0;
+    }
 
     /**
      * @return Tag
      */
-    public Tag serializeNBT() { return IntTag.valueOf(this.getFuelStored()); }
+    @Override
+    public Tag serializeNBT() {
+        return IntTag.valueOf(this.getFuelStored());
+    }
 
     /**
-     * @param nbt Tag NBT
+     * @param nbt NBT data
      */
+    @Override
     public void deserializeNBT(Tag nbt) {
         if (nbt instanceof IntTag intNbt) {
             this.fuel = intNbt.getAsInt();
@@ -114,6 +134,7 @@ public class FuelStorage {
     /**
      * @param fuel Sets the energy given
      */
+    @Override
     public void setFuel(int fuel) {
         if(fuel < 0) fuel = 0;
         if(fuel > this.capacity) fuel = this.capacity;
@@ -123,6 +144,7 @@ public class FuelStorage {
     /**
      * @param fuel Amount of energy to add
      */
+    @Override
     public void addFuel(int fuel) {
         setFuel(this.fuel + fuel);
     }
@@ -130,6 +152,7 @@ public class FuelStorage {
     /**
      * @param fuel Amount of energy to remove
      */
+    @Override
     public void removeFuel(int fuel) {
         setFuel(this.fuel - fuel);
     }

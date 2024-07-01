@@ -4,21 +4,21 @@ import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 
 @AutoRegisterCapability
 public interface IFuelStorage {
-    int receiveEnergy(int var1, boolean var2);
+    int receiveFuel(int maxReceive, boolean simulate);
 
-    int extractEnergy(int var1, boolean var2);
+    int extractFuel(int maxExtract, boolean simulate);
 
-    int getEnergyStored();
+    int getFuelStored();
 
-    int getMaxEnergyStored();
+    int getMaxFuelStored();
 
     boolean canExtract();
 
     boolean canReceive();
 
-    void setFuel(int var1);
+    void setFuel(int fuel);
 
-    int addFuel(int var1);
+    void addFuel(int fuel);
 
-    int removeFuel(int var1);
+    void removeFuel(int fuel);
 }
