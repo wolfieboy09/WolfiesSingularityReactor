@@ -3,7 +3,8 @@ package dev.wolfieboy09.singularity.storage;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;
 
-// I took EnergyStorage, and changed it to fuel, so thanks forge!!
+// I took EnergyStorage, and changed it to fuel, so thanks forge!
+// I also added some custom methods as well, not like you care really
 public class SingularityFuelStorage {
     protected int fuel;
     protected int capacity;
