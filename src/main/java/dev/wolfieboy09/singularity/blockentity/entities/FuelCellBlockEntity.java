@@ -2,8 +2,8 @@ package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
 import dev.wolfieboy09.singularity.blockentity.capabilities.SingularityCapabilities;
-import dev.wolfieboy09.singularity.storage.FuelStorage;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
+import dev.wolfieboy09.singularity.storage.FuelStorage;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

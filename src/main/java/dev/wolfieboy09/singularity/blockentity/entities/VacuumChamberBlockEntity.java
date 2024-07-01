@@ -2,8 +2,8 @@ package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
-import dev.wolfieboy09.singularity.storage.SingularityEnergyStorage;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
+import dev.wolfieboy09.singularity.storage.SingularityEnergyStorage;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.texture.Tickable;
 import net.minecraft.core.BlockPos;

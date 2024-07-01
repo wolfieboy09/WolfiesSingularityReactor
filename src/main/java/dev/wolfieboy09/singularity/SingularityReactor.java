@@ -5,7 +5,6 @@ import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import dev.wolfieboy09.singularity.registry.CreativeTabRegistry;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import dev.wolfieboy09.singularity.registry.ItemRegistry;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
