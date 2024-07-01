@@ -1,9 +1,8 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
-import dev.wolfieboy09.singularity.storage.SingularityEnergyStorage;
-import dev.wolfieboy09.singularity.storage.SingularityFuelStorage;
+import dev.wolfieboy09.singularity.blockentity.capabilities.SingularityCapabilities;
+import dev.wolfieboy09.singularity.storage.FuelStorage;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -32,8 +31,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
-    private final SingularityFuelStorage fuel = new SingularityFuelStorage(10000, 500);
-    private final LazyOptional<SingularityFuelStorage> lazyFuel = LazyOptional.of(() -> this.fuel);
+    private final FuelStorage fuel = new FuelStorage(10000, 500);
+    private final LazyOptional<FuelStorage> lazyFuel = LazyOptional.of(() -> this.fuel);
 
     public final ContainerData data = new ContainerData() {
         @Override
@@ -101,15 +100,15 @@ public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+        if (cap == SingularityCapabilities.FUEL) {
             return this.lazyFuel.cast();
         } else {
             return super.getCapability(cap);
         }
     }
 
-    public LazyOptional<SingularityFuelStorage> getFuelOptional() { return this.lazyFuel; }
-    public SingularityFuelStorage getFuel() { return this.fuel; }
+    public LazyOptional<FuelStorage> getFuelOptional() { return this.lazyFuel; }
+    public FuelStorage getFuel() { return this.fuel; }
 
     private void sendUpdate() {
         setChanged();
