@@ -1,0 +1,13 @@
+{
+  "type": "singularity:vacuuming",
+  "energy": 500,
+  "vacuumingtime": 100,
+  "ingredient": [
+    {
+      "item": "minecraft:stone"
+    }
+  ],
+  "result": {
+
+  }
+}

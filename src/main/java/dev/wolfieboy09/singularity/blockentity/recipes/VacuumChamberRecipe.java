@@ -71,10 +71,11 @@ public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public VacuumChamberRecipe fromJson(ResourceLocation pRecipeId, JsonObject serializedRecipe) {
-            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
             JsonArray ingredient = GsonHelper.getAsJsonArray(serializedRecipe, "ingredient");
             int cookingTime = GsonHelper.getAsInt(serializedRecipe, "time", FALLBACK_COOKING_TIME);
             int energyUsage = GsonHelper.getAsInt(serializedRecipe, "energy", FALLBACK_ENERGY_USAGE);
+            // wish I did not need to have a list for a single item. Oh, well
+            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
             NonNullList<Ingredient> input = NonNullList.withSize(1, Ingredient.EMPTY);
             input.set(1, Ingredient.fromJson(ingredient.get(1)));
             return new VacuumChamberRecipe(pRecipeId, result, input, cookingTime, energyUsage);
