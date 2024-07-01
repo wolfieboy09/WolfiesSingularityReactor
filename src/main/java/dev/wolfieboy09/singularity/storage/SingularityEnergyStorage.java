@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularity.blockentity.entities.util;
+package dev.wolfieboy09.singularity.storage;
 
 import net.minecraftforge.energy.EnergyStorage;
 
@@ -10,7 +10,7 @@ public class SingularityEnergyStorage extends EnergyStorage {
 
     /**
      * @param capacity The max capacity of the entity
-     * @param maxTransfer The maximum transfer rate
+     * @param maxTransfer The maximum transfer rate (receive and extract)
      */
     public SingularityEnergyStorage(int capacity, int maxTransfer) { super(capacity, maxTransfer); }
 
