@@ -164,11 +164,9 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
         }
     }
 
-
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
         return new VacuumChamberMenu(containerId, inventory, this, this.data);
     }
-
 }

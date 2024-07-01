@@ -69,19 +69,17 @@ public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     protected void saveAdditional(CompoundTag nbt) {
-        CompoundTag data = new CompoundTag();
-        data.put("Fuel", this.fuel.serializeNBT());
+        nbt.put("Fuel", this.fuel.serializeNBT());
         super.saveAdditional(nbt);
     }
 
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
-        CompoundTag data = nbt.getCompound(SingularityReactor.MOD_ID);
-        if (data.isEmpty()) return;
+        if (nbt.isEmpty()) return;
 
-        if (data.contains("Fuel", Tag.TAG_INT)) {
-            this.fuel.deserializeNBT(data.getCompound("Fuel"));
+        if (nbt.contains("Fuel")) {
+            this.fuel.deserializeNBT(nbt.getCompound("Fuel"));
         }
     }
 
