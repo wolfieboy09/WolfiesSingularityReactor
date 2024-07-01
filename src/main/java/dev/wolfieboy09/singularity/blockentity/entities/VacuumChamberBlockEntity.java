@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.storage.SingularityEnergyStorage;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -165,8 +166,8 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return null;
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
+        return new VacuumChamberMenu(containerId, inventory, this, this.data);
     }
 
 }

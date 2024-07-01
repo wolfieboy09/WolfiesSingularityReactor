@@ -26,18 +26,27 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
         this(pContainerId, inv, Objects.requireNonNull(inv.player.level().getBlockEntity(extraData.readBlockPos())), new SimpleContainerData(4));
     }
 
-    public VacuumChamberMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.VACUUM_CHAMBER_MENU.get(), pContainerId);
+    public VacuumChamberMenu(int containerId, Inventory playerInv, BlockEntity blockEntity, ContainerData data) {
+        super(ModMenuTypes.VACUUM_CHAMBER_MENU.get(), containerId);
 
-        if (entity instanceof VacuumChamberBlockEntity blockEntity) {
-            this.blockEntity = blockEntity;
+        if (blockEntity instanceof VacuumChamberBlockEntity entity) {
+            this.blockEntity = entity;
         } else {
-            throw new IllegalStateException("Incorrect block entity class (%s) passed into VacuumChamberMenu".formatted(entity.getClass().getCanonicalName()));
+            throw new IllegalStateException("Incorrect block entity class (%s) passed into VacuumChamberMenu".formatted(blockEntity.getClass().getCanonicalName()));
         }
 
-        checkContainerSize(inv, 2);
-        this.levelAccess = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
+        checkContainerSize(playerInv, 2);
+        this.levelAccess = ContainerLevelAccess.create(Objects.requireNonNull(blockEntity.getLevel()), blockEntity.getBlockPos());
         this.data = data;
+
+
+        createPlayerHotbar(playerInv);
+        createPlayerInventory(playerInv);
+
+        // IntelliJ wanted to cast it, even tho it's checked above
+        createBlockEntityInventory((VacuumChamberBlockEntity) blockEntity);
+
+        addDataSlots(data);
     }
 
     public int getScaledProgress() {
@@ -48,44 +57,77 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
-    private static final int HOTBAR_SLOT_COUNT = 9;
-    private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
-    private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
-    private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
-    private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
-    private static final int VANILLA_FIRST_SLOT_INDEX = 0;
-    private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;
-    @Override
-    public ItemStack quickMoveStack(Player player, int index) {
-        Slot sourceSlot = slots.get(index);
-        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;
-        ItemStack sourceStack = sourceSlot.getItem();
-        ItemStack copyOfSourceStack = sourceStack.copy();
+    private void createBlockEntityInventory(VacuumChamberBlockEntity be) {
+        // be.getInventoryOptional().ifPresent(inventory -> addSlot(new CustomFuelSlot(inventory, 0, 44, 36)));
+    }
 
-        if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;
+    private void createPlayerInventory(Inventory playerInv) {
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 9; column++) {
+                addSlot(new Slot(playerInv, 9 + column + (row * 9), 8 + (column * 18), 84 + (row * 18)));
             }
-        } else if (index < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
-            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
+        }
+    }
+
+    private void createPlayerHotbar(Inventory playerInv) {
+        for (int column = 0; column < 9; column++) {
+            addSlot(new Slot(playerInv, column, 8 + (column * 18), 142));
+        }
+    }
+
+    @Override
+    public @NotNull ItemStack quickMoveStack(@NotNull Player pPlayer, int pIndex) {
+        Slot fromSlot = getSlot(pIndex);
+        ItemStack fromStack = fromSlot.getItem();
+
+        if(fromStack.getCount() <= 0) fromSlot.set(ItemStack.EMPTY);
+        if(!fromSlot.hasItem()) return ItemStack.EMPTY;
+
+        ItemStack copyFromStack = fromStack.copy();
+
+        if(pIndex < 36) {
+            // We are inside the player's inventory
+            if(!moveItemStackTo(fromStack, 36, 37, false))
                 return ItemStack.EMPTY;
-            }
+        } else if (pIndex < 37) {
+            // We are inside the block entity inventory
+            if(!moveItemStackTo(fromStack, 0, 36, false))
+                return ItemStack.EMPTY;
         } else {
-            SingularityReactor.LOGGER.warn("Invalid Slot Index: {}", index);
+            SingularityReactor.LOGGER.error("Invalid slot index: %s".formatted(pIndex));
             return ItemStack.EMPTY;
         }
-        if (sourceStack.getCount() == 0) {
-            sourceSlot.set(ItemStack.EMPTY);
-        } else {
-            sourceSlot.setChanged();
-        }
-        return copyOfSourceStack;
+
+        fromSlot.setChanged();
+        fromSlot.onTake(pPlayer, fromStack);
+
+        return copyFromStack;
     }
 
     @Override
     public boolean stillValid(@NotNull Player pPlayer) {
         return stillValid(this.levelAccess, pPlayer, BlockRegistry.VACUUM_CHAMBER.get());
+    }
+
+    public VacuumChamberBlockEntity getBlockEntity() { return this.blockEntity; }
+
+    public int getEnergy() {
+        return this.data.get(0);
+    }
+
+    public int getMaxEnergy() {
+        return this.data.get(1);
+    }
+
+    public int getBurnTime() {
+        return this.data.get(2);
+    }
+
+    public int getMaxBurnTime() {
+        return this.data.get(3);
+    }
+
+    public int getEnergyStoredScaled() {
+        return (int) (((float) getEnergy() / (float) getMaxEnergy()) * 38);
     }
 }
