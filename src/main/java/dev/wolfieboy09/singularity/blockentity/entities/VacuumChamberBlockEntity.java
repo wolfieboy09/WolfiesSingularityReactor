@@ -111,9 +111,9 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
         if (data.contains("Inventory", Tag.TAG_COMPOUND)) {
             this.inventory.deserializeNBT(data.getCompound("Inventory"));
         }
-        // Tag.TAG_INT was causing data to not load
+
         if (data.contains("Energy")) {
-            this.energy.deserializeNBT(data.getCompound("Energy"));
+            this.energy.deserializeNBT(data.get("Energy"));
         }
         if (data.contains("Progress", Tag.TAG_INT)) {
             this.progress = data.getInt("Progress");
