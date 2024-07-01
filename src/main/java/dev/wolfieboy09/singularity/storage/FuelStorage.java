@@ -5,7 +5,7 @@ import net.minecraft.nbt.Tag;
 
 // I took EnergyStorage, and changed it to fuel, so thanks forge!
 // I also added some custom methods as well, not like you care really
-public class SingularityFuelStorage {
+public class FuelStorage {
     protected int fuel;
     protected int capacity;
     protected int maxReceive;
@@ -15,20 +15,20 @@ public class SingularityFuelStorage {
      * @param capacity Maximum amount of fuel
      * @apiNote maxReceive and maxExtract will be set to what capacity is
      */
-    public SingularityFuelStorage(int capacity) { this(capacity, capacity, capacity, 0); }
+    public FuelStorage(int capacity) { this(capacity, capacity, capacity, 0); }
 
     /**
      * @param capacity Maximum amount of fuel
      * @param maxTransfer The maximum transfer rate (receive and extract)
      */
-    public SingularityFuelStorage(int capacity, int maxTransfer) { this(capacity, maxTransfer, maxTransfer, 0); }
+    public FuelStorage(int capacity, int maxTransfer) { this(capacity, maxTransfer, maxTransfer, 0); }
 
     /**
      * @param capacity Maximum amount of fuel
      * @param maxReceive Maximum amount of fuel that can go in at once
      * @param maxExtract Maximum amount of fuel that can exit at once
      */
-    public SingularityFuelStorage(int capacity, int maxReceive, int maxExtract) { this(capacity, maxReceive, maxExtract, 0); }
+    public FuelStorage(int capacity, int maxReceive, int maxExtract) { this(capacity, maxReceive, maxExtract, 0); }
 
     /**
      * @param capacity Maximum amount of fuel
@@ -36,7 +36,7 @@ public class SingularityFuelStorage {
      * @param maxExtract Maximum amount of fuel that can exit at once
      * @param fuel How much fuel is given at first
      */
-    public SingularityFuelStorage(int capacity, int maxReceive, int maxExtract, int fuel) {
+    public FuelStorage(int capacity, int maxReceive, int maxExtract, int fuel) {
         this.capacity = capacity;
         this.maxReceive = maxReceive;
         this.maxExtract = maxExtract;
