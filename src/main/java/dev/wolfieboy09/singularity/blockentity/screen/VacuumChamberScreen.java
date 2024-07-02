@@ -12,6 +12,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public class VacuumChamberScreen extends AbstractContainerScreen<VacuumChamberMenu> {
+    // TEMPORARY CODE - WILL IMPROVE ON
     private static final ResourceLocation TEXTURE = new ResourceLocation(SingularityReactor.MOD_ID, "textures/gui/vacuum_chamber_gui.png");
 
     public VacuumChamberScreen(VacuumChamberMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
