@@ -14,6 +14,7 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MOD_ID);
     public static final RegistryObject<MenuType<VacuumChamberMenu>> VACUUM_CHAMBER_MENU =
             registerMenuType(VacuumChamberMenu::new, "vacuum_chamber_menu");
+
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }
