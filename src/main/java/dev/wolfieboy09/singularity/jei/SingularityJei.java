@@ -9,6 +9,7 @@ import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -38,5 +39,10 @@ public class SingularityJei implements IModPlugin {
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
         registration.addRecipeTransferHandler(VacuumChamberMenu.class, ModMenuTypes.VACUUM_CHAMBER_MENU.get(), VacuumingCategory.VACUUM_CHAMBER_RECIPE_TYPE, 0, 2, 2, 36);
+    }
+
+    @Override
+    public void registerCategories(IRecipeCategoryRegistration registration) {
+        registration.addRecipeCategories(new VacuumingCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 }
