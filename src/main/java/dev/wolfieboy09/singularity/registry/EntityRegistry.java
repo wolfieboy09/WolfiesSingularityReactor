@@ -16,17 +16,17 @@ public class EntityRegistry {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MOD_ID);
 
     public static final RegistryObject<BlockEntityType<VacuumChamberBlockEntity>> VACUUM_CHAMBER_BLOCK_ENTITY =
-            BLOCK_ENTITIES.register("vacuum_chamber",
+            BLOCK_ENTITIES.register("vacuum_chamber_be",
                     () -> BlockEntityType.Builder.of(VacuumChamberBlockEntity::new, BlockRegistry.VACUUM_CHAMBER.get())
                             .build(null));
 
     public static final RegistryObject<BlockEntityType<FuelCellBlockEntity>> FUEL_CELL_BLOCK_ENTITY =
-            BLOCK_ENTITIES.register("fuel_cell",
+            BLOCK_ENTITIES.register("fuel_cell_be",
                     () -> BlockEntityType.Builder.of(FuelCellBlockEntity::new, BlockRegistry.FUEL_CELL.get())
                             .build(null));
 
     public static final RegistryObject<BlockEntityType<ElectricFurnaceBlockEntity>> ELECTRIC_FURNACE =
-            BLOCK_ENTITIES.register("electric_furnace",
+            BLOCK_ENTITIES.register("electric_furnace_be",
                     () -> BlockEntityType.Builder.of(ElectricFurnaceBlockEntity::new, BlockRegistry.ELECTRIC_FURNACE.get())
                             .build(null));
 
