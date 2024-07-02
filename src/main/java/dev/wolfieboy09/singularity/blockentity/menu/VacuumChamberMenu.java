@@ -43,8 +43,7 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
         createPlayerHotbar(playerInv);
         createPlayerInventory(playerInv);
 
-        // IntelliJ wanted to cast it, even tho it's checked above
-        createBlockEntityInventory((VacuumChamberBlockEntity) blockEntity);
+
 
         addDataSlots(data);
     }
@@ -55,10 +54,6 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
         int progressArrowSize = 31;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
-    }
-
-    private void createBlockEntityInventory(VacuumChamberBlockEntity be) {
-        // be.getInventoryOptional().ifPresent(inventory -> addSlot(new CustomFuelSlot(inventory, 0, 44, 36)));
     }
 
     private void createPlayerInventory(Inventory playerInv) {
@@ -105,29 +100,12 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(@NotNull Player pPlayer) {
-        return stillValid(this.levelAccess, pPlayer, BlockRegistry.VACUUM_CHAMBER.get());
-    }
+    public boolean stillValid(@NotNull Player pPlayer) { return stillValid(this.levelAccess, pPlayer, BlockRegistry.VACUUM_CHAMBER.get()); }
 
     public VacuumChamberBlockEntity getBlockEntity() { return this.blockEntity; }
-
-    public int getEnergy() {
-        return this.data.get(0);
-    }
-
-    public int getMaxEnergy() {
-        return this.data.get(1);
-    }
-
-    public int getBurnTime() {
-        return this.data.get(2);
-    }
-
-    public int getMaxBurnTime() {
-        return this.data.get(3);
-    }
-
-    public int getEnergyStoredScaled() {
-        return (int) (((float) getEnergy() / (float) getMaxEnergy()) * 38);
-    }
+    public int getEnergy() { return this.data.get(0); }
+    public int getMaxEnergy() { return this.data.get(1); }
+    public int getBurnTime() { return this.data.get(2); }
+    public int getMaxBurnTime() { return this.data.get(3); }
+    public int getEnergyStoredScaled() { return (int) (((float) getEnergy() / (float) getMaxEnergy()) * 38); }
 }
