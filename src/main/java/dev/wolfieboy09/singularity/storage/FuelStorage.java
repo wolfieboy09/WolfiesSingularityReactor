@@ -14,7 +14,7 @@ public class FuelStorage implements IFuelStorage, INBTSerializable<Tag> {
 
     /**
      * @param capacity Maximum amount of fuel
-     * @apiNote maxReceive and maxExtract will be set to what capacity is
+     * @implNote  maxReceive and maxExtract will be set to what capacity is
      */
     public FuelStorage(int capacity) { this(capacity, capacity, capacity, 0); }
 
