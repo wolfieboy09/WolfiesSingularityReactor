@@ -54,7 +54,7 @@ public class VacuumChamberScreen extends AbstractContainerScreen<VacuumChamberMe
         int energyStored = this.menu.getEnergy();
         int maxEnergy = this.menu.getMaxEnergy();
 
-        Component text = Component.literal("%s / %s FE".formatted(energyStored, maxEnergy));
+        Component text = Component.literal("%s / %s ⚡".formatted(energyStored, maxEnergy));
         if(isHovering(115, 20, 16, 40, pMouseX, pMouseY)) {
             pGuiGraphics.renderTooltip(this.font, text, pMouseX, pMouseY);
         }
