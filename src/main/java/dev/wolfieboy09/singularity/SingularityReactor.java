@@ -2,7 +2,6 @@ package dev.wolfieboy09.singularity;
 
 import com.mojang.logging.LogUtils;
 import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
-import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.blockentity.screen.VacuumChamberScreen;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import dev.wolfieboy09.singularity.registry.CreativeTabRegistry;
