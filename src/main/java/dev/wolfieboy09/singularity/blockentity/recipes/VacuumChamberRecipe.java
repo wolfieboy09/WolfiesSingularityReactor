@@ -1,5 +1,6 @@
 package dev.wolfieboy09.singularity.blockentity.recipes;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import dev.wolfieboy09.singularity.SingularityReactor;
@@ -71,13 +72,14 @@ public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public VacuumChamberRecipe fromJson(ResourceLocation pRecipeId, JsonObject serializedRecipe) {
-            JsonArray ingredient = GsonHelper.getAsJsonArray(serializedRecipe, "ingredient");
-            int cookingTime = GsonHelper.getAsInt(serializedRecipe, "time", FALLBACK_COOKING_TIME);
             int energyUsage = GsonHelper.getAsInt(serializedRecipe, "energy", FALLBACK_ENERGY_USAGE);
-            // wish I did not need to have a list for a single item. Oh, well
-            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
+            int cookingTime = GsonHelper.getAsInt(serializedRecipe, "vacuumingTime", FALLBACK_COOKING_TIME);
+
             NonNullList<Ingredient> input = NonNullList.withSize(1, Ingredient.EMPTY);
+            JsonArray ingredient = GsonHelper.getAsJsonArray(serializedRecipe, "ingredient");
             input.set(1, Ingredient.fromJson(ingredient.get(1)));
+
+            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
             return new VacuumChamberRecipe(pRecipeId, result, input, cookingTime, energyUsage);
         }
 
