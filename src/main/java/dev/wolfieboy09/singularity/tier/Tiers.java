@@ -14,6 +14,3 @@ public enum Tiers {
 
     Tiers(Rarity rarity) {}
 }
-
-
-
