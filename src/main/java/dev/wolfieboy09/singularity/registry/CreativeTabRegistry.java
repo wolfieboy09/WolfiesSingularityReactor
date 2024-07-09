@@ -19,5 +19,7 @@ public class CreativeTabRegistry {
                     .displayItems((params, output) -> {
                         output.accept(BlockRegistry.FUEL_CELL.get());
                         output.accept(BlockRegistry.VACUUM_CHAMBER.get());
+                        //TODO output.accept(BlockRegistry.ELECTRIC_FURNACE.get());
+                        output.accept(ItemRegistry.EMPTY_POWER_MODULE.get());
                     }).build());
 }
