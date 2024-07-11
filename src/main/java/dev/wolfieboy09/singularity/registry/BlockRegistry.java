@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.registry;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.blockentity.block.BlastFurnaceController;
 import dev.wolfieboy09.singularity.blockentity.block.ElectricFurnace;
 import dev.wolfieboy09.singularity.blockentity.block.FuelCell;
 import dev.wolfieboy09.singularity.blockentity.block.VacuumChamber;
@@ -38,7 +39,7 @@ public class BlockRegistry {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
 
     public static final RegistryObject<Block> BLAST_FURNACE_CONTROLLER = registerBlock("blast_furnace_controller",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+            () -> new BlastFurnaceController(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
 
 
     // registry stuff

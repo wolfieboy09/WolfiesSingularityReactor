@@ -1,5 +1,6 @@
 package dev.wolfieboy09.singularity.registry;
 
+import dev.wolfieboy09.singularity.blockentity.entities.BlastFurnaceControllerEntity;
 import dev.wolfieboy09.singularity.blockentity.entities.ElectricFurnaceBlockEntity;
 import dev.wolfieboy09.singularity.blockentity.entities.FuelCellBlockEntity;
 import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
@@ -28,6 +29,11 @@ public class EntityRegistry {
     public static final RegistryObject<BlockEntityType<ElectricFurnaceBlockEntity>> ELECTRIC_FURNACE =
             BLOCK_ENTITIES.register("electric_furnace_be",
                     () -> BlockEntityType.Builder.of(ElectricFurnaceBlockEntity::new, BlockRegistry.ELECTRIC_FURNACE.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<BlastFurnaceControllerEntity>> BLAST_FURNACE_CONTROLLER =
+            BLOCK_ENTITIES.register("blast_furnace_be",
+                    () -> BlockEntityType.Builder.of(BlastFurnaceControllerEntity::new, BlockRegistry.BLAST_FURNACE_CONTROLLER.get())
                             .build(null));
 
 }
