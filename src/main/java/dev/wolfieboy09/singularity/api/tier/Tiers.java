@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularity.tier;
+package dev.wolfieboy09.singularity.api.tier;
 
 
 import net.minecraft.ChatFormatting;
