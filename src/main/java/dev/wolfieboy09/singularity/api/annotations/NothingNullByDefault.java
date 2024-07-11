@@ -15,4 +15,3 @@ import org.jetbrains.annotations.NotNull;
 @TypeQualifierDefault({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.CLASS)
 public @interface NothingNullByDefault {}
-
