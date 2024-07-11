@@ -39,15 +39,29 @@ public class BlastFurnaceControllerEntity extends BlockEntity {
     }
 
     public void tick(Level level, BlockPos pos) {
-        canFormBlastFurnace(level, pos);
+        if (canFormBlastFurnace(level, pos)) {
+            System.out.println("Passed - Can form!");
+        } else {
+            System.out.println("Failed - Can't form");
+        }
     }
 
-    public static void canFormBlastFurnace(Level world, BlockPos pos) {
+    public static boolean canFormBlastFurnace(Level world, BlockPos pos) {
         Block block = BlockRegistry.BLAST_FURNACE_BRICK.get();
 
-        if (world.getBlockState(pos.above()).getBlock() == block && world.getBlockState(pos.below()).getBlock() == block) {
-            System.out.println("Yeah!");
-       }
+        for (int y = 1; y < pos.getY() - 1; ++y) {
+            for (int x = 1; x < pos.getX() - 1; ++x) {
+                if (world.getBlockState(pos.offset(x, y, 0)).getBlock() == block || world.getBlockState(pos.offset(-x, y, 0)).getBlock() == block) {
+                    return false;
+                }
+            }
+            for (int z = 1; z < pos.getZ() - 1; ++z) {
+                if (world.getBlockState(pos.offset(0,y,z)).getBlock() == block || world.getBlockState(pos.offset(0, y, -z)).getBlock() == block) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 

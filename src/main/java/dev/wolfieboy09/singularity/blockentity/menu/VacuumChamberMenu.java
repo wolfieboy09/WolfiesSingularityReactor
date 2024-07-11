@@ -1,9 +1,9 @@
 package dev.wolfieboy09.singularity.blockentity.menu;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -12,11 +12,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+@NothingNullByDefault
 public class VacuumChamberMenu extends AbstractContainerMenu {
     private final VacuumChamberBlockEntity blockEntity;
     private final ContainerLevelAccess levelAccess;

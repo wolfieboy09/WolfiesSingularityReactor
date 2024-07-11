@@ -1,9 +1,9 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
+import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.capabilities.SingularityCapabilities;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import dev.wolfieboy09.singularity.api.storage.FuelStorage;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -23,10 +23,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+@NothingNullByDefault
 public class FuelCellBlockEntity extends BlockEntity implements MenuProvider {
     private final FuelStorage fuel = new FuelStorage(10000, 500);
     private final LazyOptional<FuelStorage> lazyFuel = LazyOptional.of(() -> this.fuel);

@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.screen;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -8,9 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
+@NothingNullByDefault
 public class VacuumChamberScreen extends AbstractContainerScreen<VacuumChamberMenu> {
     // TEMPORARY CODE - WILL IMPROVE ON
     private static final ResourceLocation TEXTURE = new ResourceLocation(SingularityReactor.MOD_ID, "textures/gui/vacuum_chamber_gui.png");

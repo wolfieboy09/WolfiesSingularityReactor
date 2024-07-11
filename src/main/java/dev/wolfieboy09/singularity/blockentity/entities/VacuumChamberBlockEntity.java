@@ -30,10 +30,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvider, Tickable {
     private final ItemStackHandler inventory = new ItemStackHandler(2);
     private final LazyOptional<ItemStackHandler> inventoryOptional = LazyOptional.of(() -> this.inventory);
