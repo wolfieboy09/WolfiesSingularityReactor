@@ -77,7 +77,7 @@ public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
 
             NonNullList<Ingredient> input = NonNullList.withSize(1, Ingredient.EMPTY);
             JsonArray ingredient = GsonHelper.getAsJsonArray(serializedRecipe, "ingredient");
-            input.set(1, Ingredient.fromJson(ingredient.get(1)));
+            input.set(0, Ingredient.fromJson(ingredient.get(0)));
 
             ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
             return new VacuumChamberRecipe(pRecipeId, result, input, cookingTime, energyUsage);
