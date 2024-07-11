@@ -34,6 +34,13 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ELECTRIC_FURNACE = registerBlock("electric_furnace",
             () -> new ElectricFurnace(BlockBehaviour.Properties.copy(Blocks.FURNACE).sound(SoundType.METAL).requiresCorrectToolForDrops()));
 
+    public static final RegistryObject<Block> BLAST_FURNACE_BRICK = registerBlock("blast_furnace_brick",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+
+    public static final RegistryObject<Block> BLAST_FURNACE_CONTROLLER = registerBlock("blast_furnace_controller",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+
+
     // registry stuff
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularity.storage;
+package dev.wolfieboy09.singularity.api.storage;
 
 import net.minecraftforge.energy.EnergyStorage;
 

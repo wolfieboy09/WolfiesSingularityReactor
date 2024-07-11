@@ -21,5 +21,7 @@ public class CreativeTabRegistry {
                         output.accept(BlockRegistry.VACUUM_CHAMBER.get());
                         //TODO output.accept(BlockRegistry.ELECTRIC_FURNACE.get());
                         output.accept(ItemRegistry.EMPTY_POWER_MODULE.get());
+                        output.accept(BlockRegistry.BLAST_FURNACE_BRICK.get());
+                        output.accept(BlockRegistry.BLAST_FURNACE_CONTROLLER.get());
                     }).build());
 }

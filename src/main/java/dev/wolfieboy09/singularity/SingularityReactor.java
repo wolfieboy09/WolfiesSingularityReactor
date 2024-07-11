@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
 import dev.wolfieboy09.singularity.blockentity.screen.VacuumChamberScreen;
 import dev.wolfieboy09.singularity.registry.*;
-import dev.wolfieboy09.singularity.storage.FuelStorage;
+import dev.wolfieboy09.singularity.api.storage.FuelStorage;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,7 +39,7 @@ public class SingularityReactor {
         BlockRegistry.BLOCKS.register(bus);
         EntityRegistry.BLOCK_ENTITIES.register(bus);
         CreativeTabRegistry.TAB.register(bus);
-        RecipeTypes.RECIPE_TYPES.register(bus);
+        RecipeSerializer.SERIALIZER.register(bus);
 
         ModMenuTypes.MENUS.register(bus);
 

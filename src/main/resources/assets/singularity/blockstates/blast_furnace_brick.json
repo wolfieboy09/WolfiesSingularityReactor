@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "singularity:block/blast_furnace_brick"
+    }
+  }
+}

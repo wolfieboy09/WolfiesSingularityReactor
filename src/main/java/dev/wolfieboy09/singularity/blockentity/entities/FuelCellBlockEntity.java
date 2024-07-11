@@ -2,7 +2,7 @@ package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.singularity.capabilities.SingularityCapabilities;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
-import dev.wolfieboy09.singularity.storage.FuelStorage;
+import dev.wolfieboy09.singularity.api.storage.FuelStorage;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
