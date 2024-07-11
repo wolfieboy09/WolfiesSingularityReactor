@@ -60,6 +60,6 @@ public class BlastFurnaceController extends BaseEntityBlock {
         }
 
         return createTickerHelper(pBlockEntityType, EntityRegistry.BLAST_FURNACE_CONTROLLER.get(),
-                (level, pos, state, blockEntity) -> blockEntity.tick(level, pos, state));
+                (level, pos, state, blockEntity) -> blockEntity.tick(level, pos));
     }
 }

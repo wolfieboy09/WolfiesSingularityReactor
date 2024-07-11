@@ -38,12 +38,13 @@ public class BlastFurnaceControllerEntity extends BlockEntity {
         return super.getCapability(cap, side);
     }
 
-    public void tick(Level level, BlockPos pos, BlockState state) {
-        validateFacesFixedSize(level, pos);
+    public void tick(Level level, BlockPos pos) {
+        canFormBlastFurnace(level, pos);
     }
 
-    public static void validateFacesFixedSize(Level world, BlockPos pos) {
+    public static void canFormBlastFurnace(Level world, BlockPos pos) {
         Block block = BlockRegistry.BLAST_FURNACE_BRICK.get();
+
         if (world.getBlockState(pos.above()).getBlock() == block && world.getBlockState(pos.below()).getBlock() == block) {
             System.out.println("Yeah!");
        }
