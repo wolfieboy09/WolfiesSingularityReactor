@@ -40,8 +40,7 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
         @Override
         public void onEnergyChanged() {
             setChanged();
-            // what is "i" exactly...
-            Objects.requireNonNull(getLevel()).sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            Objects.requireNonNull(getLevel()).sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_ALL);
         }
     };
     private final LazyOptional<SingularityEnergyStorage> energyOptional = LazyOptional.of(() -> this.energy);
