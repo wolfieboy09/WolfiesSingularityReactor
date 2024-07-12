@@ -25,18 +25,6 @@ public class BlastFurnaceController extends BaseEntityBlock {
         super(properties);
     }
 
-    private static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
 
     @Override public RenderShape getRenderShape(BlockState pState) { return RenderShape.MODEL; }
 

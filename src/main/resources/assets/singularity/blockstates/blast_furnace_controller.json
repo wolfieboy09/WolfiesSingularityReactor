@@ -1,19 +1,7 @@
 {
   "variants": {
-    "facing=north": {
+    "": {
       "model": "singularity:block/blast_furnace_controller"
-    },
-    "facing=east": {
-      "model": "singularity:block/blast_furnace_controller",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "singularity:block/blast_furnace_controller",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "singularity:block/blast_furnace_controller",
-      "y": 270
     }
   }
 }
