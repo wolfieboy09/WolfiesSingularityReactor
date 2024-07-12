@@ -6,6 +6,7 @@ import net.minecraft.world.item.Rarity;
 
 public enum Tiers {
     STARTER(Rarity.create("starter", ChatFormatting.WHITE)),
+    BASIC(Rarity.create("basic", ChatFormatting.WHITE)),
     NEOPHYTE(Rarity.create("neophyte", ChatFormatting.DARK_GREEN)),
     VANGUARD(Rarity.create("vanguard", ChatFormatting.YELLOW)),
     ARCANIST(Rarity.create("arcanist", ChatFormatting.RED)),
