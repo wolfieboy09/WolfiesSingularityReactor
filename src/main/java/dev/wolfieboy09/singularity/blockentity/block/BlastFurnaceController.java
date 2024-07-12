@@ -52,7 +52,6 @@ public class BlastFurnaceController extends BaseEntityBlock {
         if (pLevel.isClientSide()) {
             return null;
         }
-
         return createTickerHelper(pBlockEntityType, EntityRegistry.BLAST_FURNACE_CONTROLLER.get(),
                 (level, pos, state, blockEntity) -> blockEntity.tick(level, pos));
     }
