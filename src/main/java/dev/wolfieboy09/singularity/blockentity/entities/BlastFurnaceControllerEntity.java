@@ -47,9 +47,7 @@ public class BlastFurnaceControllerEntity extends BlockEntity {
     }
 
     public static boolean canFormBlastFurnace(Level level, BlockPos input) {
-        Block block = BlockRegistry.BLAST_FURNACE_BRICK.get();
-
-        return BlockPos.betweenClosedStream(input.offset(-1,-1,1), input.offset(1, 1, 1)).anyMatch(pos -> level.getBlockState(pos).getBlock() == block);
+        return BlockPos.betweenClosedStream(input.offset(-1,-1,1), input.offset(1, 1, 1)).anyMatch(pos -> level.getBlockState(pos).getBlock() == BlockRegistry.BLAST_FURNACE_BRICK.get());
     }
 
 
