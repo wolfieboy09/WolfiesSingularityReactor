@@ -41,6 +41,7 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
         @Override
         public void onEnergyChanged() {
             setChanged();
+            // what is "i" exactly...
             Objects.requireNonNull(getLevel()).sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
         }
     };
