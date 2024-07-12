@@ -2,7 +2,7 @@ package dev.wolfieboy09.singularity.api.storage;
 
 import net.minecraftforge.energy.EnergyStorage;
 
-public class SingularityEnergyStorage extends EnergyStorage {
+public abstract class SingularityEnergyStorage extends EnergyStorage {
     /**
      * @param capacity The max capacity of the entity
      */
@@ -31,6 +31,7 @@ public class SingularityEnergyStorage extends EnergyStorage {
 
     /**
      * @param energy Sets the energy given
+     * @implNote If the energy is less than zero, sets the value to 0
      */
     public void setEnergy(int energy) {
         if(energy < 0)
@@ -53,4 +54,25 @@ public class SingularityEnergyStorage extends EnergyStorage {
     public void removeEnergy(int energy) {
         setEnergy(this.energy - energy);
     }
+
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        int receiveEnergy = super.receiveEnergy(maxReceive, simulate);
+        if (receiveEnergy != 0) {
+            onEnergyChanged();
+        }
+        return receiveEnergy;
+    }
+
+    @Override
+    public int extractEnergy(int maxExtract, boolean simulate) {
+        int extractedEnergy = super.extractEnergy(maxExtract, simulate);
+        if (extractedEnergy != 0) {
+            onEnergyChanged();
+        }
+        return extractedEnergy;
+    }
+
+
+    public abstract void onEnergyChanged();
 }
