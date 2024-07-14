@@ -46,6 +46,7 @@ public class SingularityJei implements IModPlugin {
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        // Temporary numbers until I find the correct numbers
         registration.addRecipeClickArea(VacuumChamberScreen.class, 82, 35, 11, 18, VacuumingCategory.VACUUM_CHAMBER_RECIPE_TYPE);
     }
 }
