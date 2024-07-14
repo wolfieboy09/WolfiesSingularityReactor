@@ -4,14 +4,12 @@ import dev.wolfieboy09.singularity.SingularityReactor;
 import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.blockentity.recipes.VacuumChamberRecipe;
+import dev.wolfieboy09.singularity.blockentity.screen.VacuumChamberScreen;
 import dev.wolfieboy09.singularity.jei.category.VacuumingCategory;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import mezz.jei.api.registration.IRecipeRegistration;
-import mezz.jei.api.registration.IRecipeTransferRegistration;
+import mezz.jei.api.registration.*;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class SingularityJei implements IModPlugin {
-    @Override public ResourceLocation getPluginUid() { return new ResourceLocation(SingularityReactor.MOD_ID, "jei_plugin"); }
+    @Override public ResourceLocation getPluginUid() { return new ResourceLocation(SingularityReactor.MOD_ID, "singularity_jei"); }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
@@ -44,5 +42,10 @@ public class SingularityJei implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new VacuumingCategory(registration.getJeiHelpers().getGuiHelper()));
+    }
+
+    @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        registration.addRecipeClickArea(VacuumChamberScreen.class, 82, 35, 11, 18, VacuumingCategory.VACUUM_CHAMBER_RECIPE_TYPE);
     }
 }
