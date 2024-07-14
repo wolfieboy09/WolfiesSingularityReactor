@@ -10,5 +10,5 @@ public class RecipeSerializer {
     public static final DeferredRegister<net.minecraft.world.item.crafting.RecipeSerializer<?>> SERIALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, SingularityReactor.MOD_ID);
 
     public static final RegistryObject<net.minecraft.world.item.crafting.RecipeSerializer<VacuumChamberRecipe>> VACUUMING_SERIALIZER =
-            SERIALIZER.register("vacuuming", () -> VacuumChamberRecipe.Serializer.INSTANCE);
+            SERIALIZER.register(VacuumChamberRecipe.Type.ID, () -> VacuumChamberRecipe.Serializer.INSTANCE);
 }
