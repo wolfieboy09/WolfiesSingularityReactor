@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.jei;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.blockentity.recipes.VacuumChamberRecipe;
@@ -10,16 +11,13 @@ import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.*;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 
 @JeiPlugin
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+@NothingNullByDefault
 public class SingularityJei implements IModPlugin {
     @Override public ResourceLocation getPluginUid() { return new ResourceLocation(SingularityReactor.MOD_ID, "singularity_jei"); }
 
