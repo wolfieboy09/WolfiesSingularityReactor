@@ -10,6 +10,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -20,7 +22,16 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess levelAccess;
     private final ContainerData data;
 
-    public VacuumChamberMenu(int pContainerId, Inventory inv,@NotNull FriendlyByteBuf extraData) {
+    private static final int HOTBAR_SLOT_COUNT = 9;
+    private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
+    private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
+    private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
+    private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
+    private static final int VANILLA_FIRST_SLOT_INDEX = 0;
+    private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
+    private static final int TE_INVENTORY_SLOT_COUNT = 2;
+
+    public VacuumChamberMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, Objects.requireNonNull(inv.player.level().getBlockEntity(extraData.readBlockPos())), new SimpleContainerData(4));
     }
 
@@ -36,13 +47,14 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
         checkContainerSize(playerInv, 2);
         this.levelAccess = ContainerLevelAccess.create(Objects.requireNonNull(blockEntity.getLevel()), blockEntity.getBlockPos());
         this.data = data;
-
-
         createPlayerHotbar(playerInv);
         createPlayerInventory(playerInv);
-
-
-
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(
+                iItemHandler -> {
+                    this.addSlot(new SlotItemHandler(iItemHandler, 0, 79, 97));
+                    this.addSlot(new SlotItemHandler(iItemHandler, 1, 79, 44));
+                }
+        );
         addDataSlots(data);
     }
 
@@ -69,32 +81,36 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public @NotNull ItemStack quickMoveStack(@NotNull Player pPlayer, int pIndex) {
-        Slot fromSlot = getSlot(pIndex);
-        ItemStack fromStack = fromSlot.getItem();
+    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
+        Slot sourceSlot = slots.get(pIndex);
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        ItemStack sourceStack = sourceSlot.getItem();
+        ItemStack copyOfSourceStack = sourceStack.copy();
 
-        if(fromStack.getCount() <= 0) fromSlot.set(ItemStack.EMPTY);
-        if(!fromSlot.hasItem()) return ItemStack.EMPTY;
-
-        ItemStack copyFromStack = fromStack.copy();
-
-        if(pIndex < 36) {
-            // We are inside the player's inventory
-            if(!moveItemStackTo(fromStack, 36, 37, false))
+        // Check if the slot clicked is one of the vanilla container slots
+        if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+            // This is a vanilla container slot so merge the stack into the tile inventory
+            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
+                    + TE_INVENTORY_SLOT_COUNT, false)) {
+                return ItemStack.EMPTY;  // EMPTY_ITEM
+            }
+        } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
+            // This is a TE slot so merge the stack into the players inventory
+            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;
-        } else if (pIndex < 37) {
-            // We are inside the block entity inventory
-            if(!moveItemStackTo(fromStack, 0, 36, false))
-                return ItemStack.EMPTY;
+            }
         } else {
-            SingularityReactor.LOGGER.error("Invalid slot index: %s".formatted(pIndex));
+            SingularityReactor.LOGGER.error("Invalid slotIndex: {}", pIndex);
             return ItemStack.EMPTY;
         }
-
-        fromSlot.setChanged();
-        fromSlot.onTake(pPlayer, fromStack);
-
-        return copyFromStack;
+        // If stack size == 0 (the entire stack was moved) set slot contents to null
+        if (sourceStack.getCount() == 0) {
+            sourceSlot.set(ItemStack.EMPTY);
+        } else {
+            sourceSlot.setChanged();
+        }
+        sourceSlot.onTake(playerIn, sourceStack);
+        return copyOfSourceStack;
     }
 
     @Override

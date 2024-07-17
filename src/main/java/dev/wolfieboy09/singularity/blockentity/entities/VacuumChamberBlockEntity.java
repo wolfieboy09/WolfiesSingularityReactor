@@ -94,32 +94,29 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         super.saveAdditional(nbt);
-        CompoundTag data = new CompoundTag();
-        data.put("Inventory", this.inventory.serializeNBT());
-        data.put("Energy", this.energy.serializeNBT());
-        data.putInt("Progress", this.progress);
-        data.putInt("MaxProgress", this.maxProgress);
-        nbt.put(SingularityReactor.MOD_ID, data);
+        nbt.put("Inventory", this.inventory.serializeNBT());
+        nbt.put("Energy", this.energy.serializeNBT());
+        nbt.putInt("Progress", this.progress);
+        nbt.putInt("MaxProgress", this.maxProgress);
     }
 
     @Override
     public void load(CompoundTag nbt) {
         super.load(nbt);
-        CompoundTag data = nbt.getCompound(SingularityReactor.MOD_ID);
-        if (data.isEmpty()) return;
+        if (nbt.isEmpty()) return;
 
-        if (data.contains("Inventory", Tag.TAG_COMPOUND)) {
-            this.inventory.deserializeNBT(data.getCompound("Inventory"));
+        if (nbt.contains("Inventory", Tag.TAG_COMPOUND)) {
+            this.inventory.deserializeNBT(nbt.getCompound("Inventory"));
         }
 
-        if (data.contains("Energy")) {
-            this.energy.deserializeNBT(data.get("Energy"));
+        if (nbt.contains("Energy")) {
+            this.energy.deserializeNBT(nbt.get("Energy"));
         }
-        if (data.contains("Progress", Tag.TAG_INT)) {
-            this.progress = data.getInt("Progress");
+        if (nbt.contains("Progress", Tag.TAG_INT)) {
+            this.progress = nbt.getInt("Progress");
         }
-        if (data.contains("MaxProgress", Tag.TAG_INT)) {
-            this.maxProgress = data.getInt("MaxProgress");
+        if (nbt.contains("MaxProgress", Tag.TAG_INT)) {
+            this.maxProgress = nbt.getInt("MaxProgress");
         }
     }
 
