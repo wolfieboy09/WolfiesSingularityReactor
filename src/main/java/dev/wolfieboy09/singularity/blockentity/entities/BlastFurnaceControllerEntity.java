@@ -39,11 +39,12 @@ public class BlastFurnaceControllerEntity extends BlockEntity {
     }
 
     public void tick(Level level, BlockPos pos) {
-        if (canFormBlastFurnace(level, pos)) {
-            System.out.println("Passed - Can form!");
-        } else {
-            System.out.println("Failed - Can't form");
-        }
+        // switch (direction) {
+        //case NORTH -> canFormBlastFurnace(level, pos.south());
+        // case WEST -> canFormBlastFurnace(level, pos.east());
+        //    case SOUTH -> canFormBlastFurnace(level, pos.north());
+          //  case EAST -> canFormBlastFurnace(level, pos.west());
+        // }
     }
 
     public static boolean canFormBlastFurnace(Level level, BlockPos input) {
