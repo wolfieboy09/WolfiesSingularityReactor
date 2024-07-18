@@ -1,5 +1,6 @@
 package dev.wolfieboy09.singularity.blockentity.block;
 
+import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.FuelCellBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -15,12 +16,9 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
+@NothingNullByDefault
 public class FuelCell extends BaseEntityBlock {
     public FuelCell(Properties pProperties) { super(pProperties); }
 
@@ -44,10 +42,10 @@ public class FuelCell extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull RenderShape getRenderShape(BlockState pState) { return RenderShape.MODEL; }
+    public RenderShape getRenderShape(BlockState pState) { return RenderShape.MODEL; }
 
     @SuppressWarnings("deprecation")
-    public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) { return SHAPE_COMMON; }
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) { return SHAPE_COMMON; }
 
     static {
         SHAPE_CENTER = Block.box(5.0, 0.0, 5.0, 11.0, 12.0, 11.0);

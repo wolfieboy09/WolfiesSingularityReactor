@@ -2,11 +2,9 @@
   "type": "singularity:vacuuming",
   "energy": 500,
   "vacuumingTime": 100,
-  "ingredient": [
-    {
+  "ingredient": {
       "item": "minecraft:stone"
-    }
-  ],
+    },
   "result": {
     "item": "minecraft:cobblestone"
   }

@@ -22,14 +22,14 @@ import java.util.List;
 @NothingNullByDefault
 public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
     private final ItemStack result;
-    private final NonNullList<Ingredient> ingredient;
+    private final Ingredient ingredient;
     private final ResourceLocation id;
     public final static int FALLBACK_ENERGY_USAGE = 500;
     public final static int FALLBACK_COOKING_TIME = 250;
     protected final int cookingTime;
     protected final int energyUsage;
 
-    public VacuumChamberRecipe(ResourceLocation id, ItemStack result, NonNullList<Ingredient> ingredient, int cookingTime, int energyUsage) {
+    public VacuumChamberRecipe(ResourceLocation id, ItemStack result, Ingredient ingredient, int cookingTime, int energyUsage) {
         this.id = id;
         this.result = result;
         this.ingredient = ingredient;
@@ -48,7 +48,7 @@ public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
     @Override public ResourceLocation getId() { return id; }
     @Override public RecipeSerializer<?> getSerializer() { return Serializer.INSTANCE; }
     @Override public RecipeType<?> getType() { return Type.INSTANCE; }
-    @Override public NonNullList<Ingredient> getIngredients() { return ingredient; }
+    public Ingredient getIngredient() { return ingredient; }
 
     public ItemStack getResultItem() { return result.copy(); }
 
@@ -72,9 +72,8 @@ public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
             int energyUsage = GsonHelper.getAsInt(serializedRecipe, "energy", FALLBACK_ENERGY_USAGE);
             int cookingTime = GsonHelper.getAsInt(serializedRecipe, "vacuumingTime", FALLBACK_COOKING_TIME);
 
-            NonNullList<Ingredient> input = NonNullList.withSize(1, Ingredient.EMPTY);
+            Ingredient input = Ingredient.merge(NonNullList.withSize(1, Ingredient.EMPTY));
             JsonArray ingredient = GsonHelper.getAsJsonArray(serializedRecipe, "ingredient");
-            input.set(0, Ingredient.fromJson(ingredient.get(0)));
 
             ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
             return new VacuumChamberRecipe(pRecipeId, result, input, cookingTime, energyUsage);
@@ -82,8 +81,7 @@ public class VacuumChamberRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public @Nullable VacuumChamberRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
-            NonNullList<Ingredient> ingredient = NonNullList.withSize(1, Ingredient.EMPTY);
-            ingredient.replaceAll(ignored -> Ingredient.fromNetwork(buffer));
+            Ingredient ingredient = Ingredient.merge(NonNullList.withSize(1, Ingredient.EMPTY));
             ItemStack result = buffer.readItem();
             int cookingTime = buffer.readInt();
             int energyUsage = buffer.readInt();
