@@ -21,21 +21,21 @@ import net.minecraft.world.item.ItemStack;
 @NothingNullByDefault
 public class VacuumingCategory implements IRecipeCategory<VacuumChamberRecipe> {
     public static final ResourceLocation LOCATION = new ResourceLocation(SingularityReactor.MOD_ID, "vacuuming");
-    public static final ResourceLocation TEXTURES = new ResourceLocation(SingularityReactor.MOD_ID,
-            "textures/gui/vacuum_chamber_gui.png");
+    public static final ResourceLocation GUI_LOCATION = new ResourceLocation(SingularityReactor.MOD_ID, "textures/gui/vacuum_chamber_gui.png");
     private int renderProgress = 0;
     public static final RecipeType<VacuumChamberRecipe> VACUUM_CHAMBER_RECIPE_TYPE = new RecipeType<>(LOCATION, VacuumChamberRecipe.class);
 
     private final IDrawable background;
     private final IDrawable icon;
 
+
     public VacuumingCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(LOCATION, 16, 11, 92, 68);
+        this.background = helper.createDrawable(GUI_LOCATION, 16, 11, 92, 68);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.VACUUM_CHAMBER.get()));
     }
 
     @Override public RecipeType<VacuumChamberRecipe> getRecipeType() { return VACUUM_CHAMBER_RECIPE_TYPE; }
-    @Override public Component getTitle() { return Component.translatable("block.singularity.vacuum_chamber"); }
+    @Override public Component getTitle() { return Component.translatable("jei.singularity.vacuuming"); }
     @Override public IDrawable getBackground() { return background; }
     @Override public IDrawable getIcon() { return icon; }
 
@@ -47,6 +47,8 @@ public class VacuumingCategory implements IRecipeCategory<VacuumChamberRecipe> {
 
     @Override
     public void draw(VacuumChamberRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(TEXTURES, 57, 3, 176, 0, 14, 14);
+        guiGraphics.blit(GUI_LOCATION, 57, 3, 176, 0, 14, 14);
     }
+
+
 }

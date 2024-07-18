@@ -9,5 +9,6 @@
 
   "block.singularity.blast_furnace_controller": "Blast Furnace Controller",
   "block.singularity.blast_furnace_brick": "Blast Furnace Brick",
-  "multiblock.singularity.blast_furnace": "Large Blast Furnace"
+  "multiblock.singularity.blast_furnace": "Large Blast Furnace",
+  "jei.singularity.vacuuming": "Vacuuming"
 }
