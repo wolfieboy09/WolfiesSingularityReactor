@@ -1,8 +1,8 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
+import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -16,10 +16,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
+@NothingNullByDefault
 public class BlastFurnaceControllerEntity extends BlockEntity {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3);
 
