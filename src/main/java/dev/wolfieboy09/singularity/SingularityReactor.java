@@ -1,10 +1,10 @@
 package dev.wolfieboy09.singularity;
 
 import com.mojang.logging.LogUtils;
+import dev.wolfieboy09.singularity.api.storage.FuelStorage;
 import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
 import dev.wolfieboy09.singularity.blockentity.screen.VacuumChamberScreen;
 import dev.wolfieboy09.singularity.registry.*;
-import dev.wolfieboy09.singularity.api.storage.FuelStorage;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;

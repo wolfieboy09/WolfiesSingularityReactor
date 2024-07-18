@@ -1,11 +1,9 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
-import dev.wolfieboy09.singularity.SingularityReactor;
 import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
+import dev.wolfieboy09.singularity.api.storage.SingularityEnergyStorage;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
-import dev.wolfieboy09.singularity.api.storage.SingularityEnergyStorage;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
