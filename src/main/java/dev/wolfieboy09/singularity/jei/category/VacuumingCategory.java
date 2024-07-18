@@ -47,23 +47,6 @@ public class VacuumingCategory implements IRecipeCategory<VacuumChamberRecipe> {
 
     @Override
     public void draw(VacuumChamberRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        int scaledRenderProgress = renderProgress / 20;
         guiGraphics.blit(TEXTURES, 57, 3, 176, 0, 14, 14);
-        if (scaledRenderProgress < 10) {
-            guiGraphics.blit(TEXTURES, 43, 33, 176, 14, 42, scaledRenderProgress);
-        } else if (scaledRenderProgress < 24) {
-            guiGraphics.blit(TEXTURES, 43, 33, 176, 14, 42, 9);
-            guiGraphics.blit(TEXTURES, 46, 39, 176, 23, scaledRenderProgress - 9, 3);
-            guiGraphics.blit(TEXTURES, 82 - (scaledRenderProgress - 9), 39, 212 - (scaledRenderProgress - 9), 23, (scaledRenderProgress - 9), 3);
-        } else {
-            guiGraphics.blit(TEXTURES, 43, 33, 176, 14, 42, 9);
-            guiGraphics.blit(TEXTURES, 46, 39, 176, 23, scaledRenderProgress - 9, 3);
-            guiGraphics.blit(TEXTURES, 82 - 15, 39, 212 - 15, 23, 15, 3);
-            guiGraphics.blit(TEXTURES, 61, 39, 176, 26, 42, scaledRenderProgress - 24);
-        }
-        renderProgress++;
-        if (scaledRenderProgress >= 31) {
-            renderProgress = 0;
-        }
     }
 }
