@@ -2,7 +2,7 @@ package dev.wolfieboy09.singularity.blockentity.recipes;
 
 import com.google.gson.JsonObject;
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.jei.category.VacuumingCategory;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.core.NonNullList;

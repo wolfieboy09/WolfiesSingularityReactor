@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.jei;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.blockentity.recipes.VacuumChamberRecipe;

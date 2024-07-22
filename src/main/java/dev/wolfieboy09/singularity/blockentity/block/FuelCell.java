@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.block;
 
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.FuelCellBlockEntity;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;

@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.screen;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

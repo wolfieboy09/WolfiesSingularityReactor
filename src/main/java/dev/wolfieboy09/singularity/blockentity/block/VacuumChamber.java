@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.block;
 
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

@@ -1,6 +1,6 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.api.storage.FuelStorage;
 import dev.wolfieboy09.singularity.capabilities.SingularityCapabilities;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;

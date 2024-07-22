@@ -31,3 +31,10 @@ description='''${mod_description}'''
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.singularity]]
+    modId="wolfieslib"
+    mandatory=true
+    versionRange="${wolfieslib_version_range}"
+    ordering="AFTER"
+    side="BOTH"

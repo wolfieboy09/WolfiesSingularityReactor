@@ -1,7 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.menu;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
 import net.minecraft.network.FriendlyByteBuf;

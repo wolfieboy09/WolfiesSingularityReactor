@@ -1,8 +1,8 @@
 package dev.wolfieboy09.singularity.blockentity.block;
 
-import dev.wolfieboy09.singularity.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.BlastFurnaceControllerEntity;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
+import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
