@@ -1,9 +1,9 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
 import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
-import dev.wolfieboy09.singularity.api.storage.SingularityEnergyStorage;
 import dev.wolfieboy09.singularity.blockentity.menu.VacuumChamberMenu;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
+import dev.wolfieboy09.wolfieslib.api.storage.WEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -34,14 +34,14 @@ import java.util.Objects;
 public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler inventory = new ItemStackHandler(2);
     private final LazyOptional<ItemStackHandler> inventoryOptional = LazyOptional.of(() -> this.inventory);
-    private final SingularityEnergyStorage energy = new SingularityEnergyStorage(10000, 1000, 0, 0) {
+    private final WEnergyStorage energy = new WEnergyStorage(10000, 1000, 0, 0) {
         @Override
         public void onEnergyChanged() {
             setChanged();
             Objects.requireNonNull(getLevel()).sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_ALL);
         }
     };
-    private final LazyOptional<SingularityEnergyStorage> energyOptional = LazyOptional.of(() -> this.energy);
+    private final LazyOptional<WEnergyStorage> energyOptional = LazyOptional.of(() -> this.energy);
     private int progress = 0;
     private int maxProgress = 0;
 
@@ -147,8 +147,8 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
     public LazyOptional<ItemStackHandler> getInventoryOptional() {return this.inventoryOptional; }
     public ItemStackHandler getInventory() { return this.inventory; }
 
-    public LazyOptional<SingularityEnergyStorage> getEnergyOptional() { return this.energyOptional; }
-    public SingularityEnergyStorage getEnergy() {return this.energy; }
+    public LazyOptional<WEnergyStorage> getEnergyOptional() { return this.energyOptional; }
+    public WEnergyStorage getEnergy() {return this.energy; }
 
 
     private void sendUpdate() {
