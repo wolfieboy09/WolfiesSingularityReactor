@@ -35,6 +35,6 @@ description='''${mod_description}'''
 [[dependencies.singularity]]
     modId="wolfieslib"
     mandatory=true
-    versionRange="${wolfieslib_version_range}"
+    versionRange="[*,)"
     ordering="AFTER"
     side="BOTH"
