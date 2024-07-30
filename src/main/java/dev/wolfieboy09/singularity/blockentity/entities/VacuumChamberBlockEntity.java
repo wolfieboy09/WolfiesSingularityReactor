@@ -45,6 +45,11 @@ public class VacuumChamberBlockEntity extends BlockEntity implements MenuProvide
     private int progress = 0;
     private int maxProgress = 0;
 
+    public static class VacuumChamberSlot {
+        public static final int INPUT_SLOT = 0;
+        public static final int OUTPUT_SLOT = 1;
+    }
+
     public final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {

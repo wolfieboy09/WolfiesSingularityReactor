@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.blockentity.menu;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
+import dev.wolfieboy09.singularity.blockentity.slotutil.SingularityResultSlot;
 import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
 import dev.wolfieboy09.singularity.registry.BlockRegistry;
@@ -51,8 +52,8 @@ public class VacuumChamberMenu extends AbstractContainerMenu {
         createPlayerInventory(playerInv);
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(
                 iItemHandler -> {
-                    this.addSlot(new SlotItemHandler(iItemHandler, 0, 79, 97));
-                    this.addSlot(new SlotItemHandler(iItemHandler, 1, 79, 44));
+                    this.addSlot(new SlotItemHandler(iItemHandler, VacuumChamberBlockEntity.VacuumChamberSlot.INPUT_SLOT, 79, 97));
+                    this.addSlot(new SingularityResultSlot(iItemHandler, VacuumChamberBlockEntity.VacuumChamberSlot.OUTPUT_SLOT, 10, 10));
                 }
         );
         addDataSlots(data);
