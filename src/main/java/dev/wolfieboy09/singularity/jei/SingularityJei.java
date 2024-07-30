@@ -34,7 +34,7 @@ public class SingularityJei implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(VacuumChamberMenu.class, ModMenuTypes.VACUUM_CHAMBER_MENU.get(), VacuumingCategory.VACUUM_CHAMBER_RECIPE_TYPE, 0, 2, 2, 36);
+        registration.addRecipeTransferHandler(VacuumChamberMenu.class, ModMenuTypes.VACUUM_CHAMBER_MENU.get(), VacuumingCategory.VACUUM_CHAMBER_RECIPE_TYPE, 0, 1, 1, 37);
     }
 
     @Override
