@@ -41,6 +41,15 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BLAST_FURNACE_CONTROLLER = registerBlock("blast_furnace_controller",
             () -> new BlastFurnaceController(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
 
+    public static final RegistryObject<Block> COAL_BURNER = registerBlock("coal_burner",
+            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 1);
+
+    public static final RegistryObject<Block> GEOTHERMAL_GENERATOR = registerBlock("geothermal_generator",
+            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 1);
+
+    public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
+            () -> new Block(BlockBehaviour.Properties.of()), 1);
+
 
     // registry stuff
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
