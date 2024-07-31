@@ -27,6 +27,10 @@ public class BlastFurnaceControllerEntity extends BlockEntity {
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
+    public BlastFurnaceControllerEntity(BlockPos pos, BlockState blockState) {
+        super(EntityRegistry.BLAST_FURNACE_CONTROLLER.get(), pos, blockState);
+    }
+
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
@@ -59,10 +63,6 @@ public class BlastFurnaceControllerEntity extends BlockEntity {
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
-    }
-
-    public BlastFurnaceControllerEntity(BlockPos pos, BlockState blockState) {
-        super(EntityRegistry.BLAST_FURNACE_CONTROLLER.get(), pos, blockState);
     }
 
 }
