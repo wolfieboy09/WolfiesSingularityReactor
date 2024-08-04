@@ -28,23 +28,16 @@ public class SingularityReactor {
     public SingularityReactor() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // modEventBus.addListener(this::commonSetup);
 
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        // modEventBus.addListener(this::addCreative);
         ItemRegistry.ITEMS.register(bus);
         BlockRegistry.BLOCKS.register(bus);
         EntityRegistry.BLOCK_ENTITIES.register(bus);
         CreativeTabRegistry.TAB.register(bus);
         RecipeSerializer.SERIALIZER.register(bus);
-
         ModMenuTypes.MENUS.register(bus);
-
         bus.addListener(this::registerCapabilities);
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -54,7 +47,6 @@ public class SingularityReactor {
 
     @SubscribeEvent public void onServerStarting(ServerStartingEvent event) { LOGGER.info("Started up on dist DEDICATED_SERVER"); }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
