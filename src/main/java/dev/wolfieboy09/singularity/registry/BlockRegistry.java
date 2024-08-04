@@ -1,10 +1,7 @@
 package dev.wolfieboy09.singularity.registry;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
-import dev.wolfieboy09.singularity.blockentity.block.BlastFurnaceController;
-import dev.wolfieboy09.singularity.blockentity.block.ElectricFurnace;
-import dev.wolfieboy09.singularity.blockentity.block.FuelCell;
-import dev.wolfieboy09.singularity.blockentity.block.VacuumChamber;
+import dev.wolfieboy09.singularity.blockentity.block.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -36,10 +33,13 @@ public class BlockRegistry {
             () -> new ElectricFurnace(BlockBehaviour.Properties.copy(Blocks.FURNACE).sound(SoundType.METAL).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> BLAST_FURNACE_BRICK = registerBlock("blast_furnace_brick",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS).strength(3.0F, 7.0F)));
 
     public static final RegistryObject<Block> BLAST_FURNACE_CONTROLLER = registerBlock("blast_furnace_controller",
-            () -> new BlastFurnaceController(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+            () -> new BlastFurnaceController(BlockBehaviour.Properties.copy(Blocks.BRICKS).strength(3.0F, 7.0F)));
+
+    public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
+            () -> new SolarPanel(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()), 1);
 
     public static final RegistryObject<Block> COAL_BURNER = registerBlock("coal_burner",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 1);
@@ -47,8 +47,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> GEOTHERMAL_GENERATOR = registerBlock("geothermal_generator",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 1);
 
-    public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
-            () -> new Block(BlockBehaviour.Properties.of()), 1);
+
 
 
     // registry stuff

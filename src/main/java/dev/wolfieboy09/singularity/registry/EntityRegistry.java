@@ -1,9 +1,6 @@
 package dev.wolfieboy09.singularity.registry;
 
-import dev.wolfieboy09.singularity.blockentity.entities.BlastFurnaceControllerEntity;
-import dev.wolfieboy09.singularity.blockentity.entities.ElectricFurnaceBlockEntity;
-import dev.wolfieboy09.singularity.blockentity.entities.FuelCellBlockEntity;
-import dev.wolfieboy09.singularity.blockentity.entities.VacuumChamberBlockEntity;
+import dev.wolfieboy09.singularity.blockentity.entities.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -34,6 +31,11 @@ public class EntityRegistry {
     public static final RegistryObject<BlockEntityType<BlastFurnaceControllerEntity>> BLAST_FURNACE_CONTROLLER =
             BLOCK_ENTITIES.register("blast_furnace_be",
                     () -> BlockEntityType.Builder.of(BlastFurnaceControllerEntity::new, BlockRegistry.BLAST_FURNACE_CONTROLLER.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL =
+            BLOCK_ENTITIES.register("solar_panel",
+                    () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, BlockRegistry.SOLAR_PANEL.get())
                             .build(null));
 
 }
