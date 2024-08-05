@@ -2,6 +2,7 @@
   "block.singularity.fuel_cell": "Fuel Cell",
   "block.singularity.vacuum_chamber": "Vacuum Chamber",
   "block.singularity.electric_furnace": "Electric Furnace",
+  "block.singularity.solar_panel": "Solar Panel",
 
   "item.singularity.empty_power_module": "Empty Power Module",
 
