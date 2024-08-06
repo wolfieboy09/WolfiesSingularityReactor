@@ -132,7 +132,7 @@ public class FuelStorage implements IFuelStorage, INBTSerializable<Tag> {
     }
 
     /**
-     * @param fuel Sets the energy given
+     * @param fuel Sets the fuel given
      */
     @Override
     public void setFuel(int fuel) {
@@ -142,7 +142,7 @@ public class FuelStorage implements IFuelStorage, INBTSerializable<Tag> {
     }
 
     /**
-     * @param fuel Amount of energy to add
+     * @param fuel Amount of fuel to add
      */
     @Override
     public void addFuel(int fuel) {
@@ -150,7 +150,7 @@ public class FuelStorage implements IFuelStorage, INBTSerializable<Tag> {
     }
 
     /**
-     * @param fuel Amount of energy to remove
+     * @param fuel Amount of fuel to remove
      */
     @Override
     public void removeFuel(int fuel) {
