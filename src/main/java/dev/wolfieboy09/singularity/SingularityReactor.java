@@ -6,12 +6,15 @@ import dev.wolfieboy09.singularity.blockentity.menu.ModMenuTypes;
 import dev.wolfieboy09.singularity.blockentity.screen.VacuumChamberScreen;
 import dev.wolfieboy09.singularity.registry.*;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -24,12 +27,18 @@ import org.slf4j.Logger;
 public class SingularityReactor {
     public static final String MOD_ID = "singularity";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final boolean COMPUTER_CRAFT_LOADED = ModList.get().isLoaded("computercraft");
+    public static Level WORLD;
+
 
     public SingularityReactor() {
+
+        // Register ourselves for server and other game events we are interested in
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(this::onWorldLoad);
 
         ItemRegistry.ITEMS.register(bus);
         BlockRegistry.BLOCKS.register(bus);
@@ -57,5 +66,9 @@ public class SingularityReactor {
 
     public void registerCapabilities(@NotNull RegisterCapabilitiesEvent event) {
         event.register(FuelStorage.class);
+    }
+
+    private void onWorldLoad(@NotNull LevelEvent.Load event) {
+        WORLD = (Level) event.getLevel();
     }
 }
