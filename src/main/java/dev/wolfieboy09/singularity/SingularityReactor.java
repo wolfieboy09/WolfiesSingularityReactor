@@ -32,8 +32,6 @@ public class SingularityReactor {
 
 
     public SingularityReactor() {
-
-        // Register ourselves for server and other game events we are interested in
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 
@@ -48,6 +46,10 @@ public class SingularityReactor {
         ModMenuTypes.MENUS.register(bus);
         bus.addListener(this::registerCapabilities);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        if (COMPUTER_CRAFT_LOADED) {
+            LOGGER.info("[Singularity Integration] Mod id [computercraft] detected");
+        }
     }
 
     // private void commonSetup(final FMLCommonSetupEvent event) {}
