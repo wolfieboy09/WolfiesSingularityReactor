@@ -5,7 +5,7 @@
   "block.singularity.solar_panel": "Solar Panel",
 
   "item.singularity.empty_power_module": "Empty Power Module",
-
+  "item.singularity.power_module_starter": "Starter Power Module",
   "creative_tab.singularity.name": "Wolfie's Singularity Reactor",
 
   "block.singularity.blast_furnace_controller": "Blast Furnace Controller",
