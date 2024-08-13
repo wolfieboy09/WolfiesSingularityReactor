@@ -1,6 +1,5 @@
 package dev.wolfieboy09.singularity.blockentity.entities;
 
-import dan200.computercraft.shared.Capabilities;
 import dev.wolfieboy09.singularity.SingularityReactor;
 import dev.wolfieboy09.singularity.intergration.computercraft.SolarPanelPeripheral;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
@@ -109,7 +108,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
 
         if (!SingularityReactor.COMPUTER_CRAFT_LOADED)
             return super.getCapability(cap, direction);
-        if (cap == Capabilities.CAPABILITY_PERIPHERAL) {
+        if (cap == dan200.computercraft.shared.Capabilities.CAPABILITY_PERIPHERAL) {
             return LazyOptional.of(() -> new SolarPanelPeripheral(this)).cast();
         }
         return super.getCapability(cap, direction);

@@ -34,7 +34,6 @@ public class SingularityReactor {
     public SingularityReactor() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(this::onWorldLoad);
 

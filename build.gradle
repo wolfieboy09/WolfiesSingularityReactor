@@ -96,7 +96,7 @@ dependencies {
     compileOnly("cc.tweaked:cc-tweaked-$minecraft_version-core-api:$cctVersion")
     compileOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge-api:$cctVersion"))
     compileOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge:$cctVersion"))
-    runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge:$cctVersion"))
+    // runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge:$cctVersion"))
 }
 
 tasks.named('processResources', ProcessResources).configure {
