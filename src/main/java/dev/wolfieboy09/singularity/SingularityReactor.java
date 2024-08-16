@@ -30,7 +30,6 @@ public class SingularityReactor {
     public static final boolean COMPUTER_CRAFT_LOADED = ModList.get().isLoaded("computercraft");
     public static Level WORLD;
 
-
     public SingularityReactor() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
