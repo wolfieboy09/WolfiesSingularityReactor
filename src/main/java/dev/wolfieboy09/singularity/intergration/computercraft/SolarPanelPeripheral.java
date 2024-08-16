@@ -2,7 +2,7 @@ package dev.wolfieboy09.singularity.intergration.computercraft;
 
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import dev.wolfieboy09.singularity.blockentity.entities.SolarPanelBlockEntity;
+import dev.wolfieboy09.singularity.blockentity.entities.generators.SolarPanelBlockEntity;
 import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import org.jetbrains.annotations.Nullable;
 

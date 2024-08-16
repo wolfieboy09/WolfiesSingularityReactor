@@ -1,6 +1,7 @@
 package dev.wolfieboy09.singularity.registry;
 
 import dev.wolfieboy09.singularity.blockentity.entities.*;
+import dev.wolfieboy09.singularity.blockentity.entities.generators.SolarPanelBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;

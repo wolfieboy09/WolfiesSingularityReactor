@@ -1,4 +1,4 @@
-package dev.wolfieboy09.singularity.blockentity.entities;
+package dev.wolfieboy09.singularity.blockentity.entities.generators;
 
 import dev.wolfieboy09.singularity.SingularityReactor;
 import dev.wolfieboy09.singularity.intergration.computercraft.SolarPanelPeripheral;
@@ -123,5 +123,6 @@ public class SolarPanelBlockEntity extends BlockEntity {
 
     @Nullable
     @Override public Packet<ClientGamePacketListener> getUpdatePacket() { return ClientboundBlockEntityDataPacket.create(this); }
-    
+
+
 }

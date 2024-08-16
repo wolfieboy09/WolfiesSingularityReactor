@@ -1,10 +1,9 @@
 package dev.wolfieboy09.singularity.blockentity.block;
 
-import dev.wolfieboy09.singularity.blockentity.entities.SolarPanelBlockEntity;
+import dev.wolfieboy09.singularity.blockentity.entities.generators.SolarPanelBlockEntity;
 import dev.wolfieboy09.singularity.registry.EntityRegistry;
 import dev.wolfieboy09.wolfieslib.api.annotations.NothingNullByDefault;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
